@@ -5,9 +5,13 @@
     <title>Plot Demo</title>
 
     <!-- Include D3 -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="Parse.js"></script>
+    <script src="Plot.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
-    <div id="graph"></div>
+    <div id="graph" style="width: 900px; height: 400px;"></div>
+    Select data file for plot <input type="file" onchange="plot(this)">
 </body>
 </html>
