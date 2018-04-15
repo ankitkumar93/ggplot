@@ -70,13 +70,14 @@ function SetupLinePlot(marginInfo, data, yTags, graphTitle, secondaryYAxis)
     // }
 
     // Get formatted time
-    // var getTimeLambda = d3.timeParse("%d-%b-%y");
-    // data.forEach(function(point)
-    // {
-    //    point.x = getTimeLambda(point.x);
-    // });
+    var nsDivider = Math.pow(10, 6);
+    data.forEach(function(point)
+    {
+        var unixTime = point.x / nsDivider;
+        point.x = new Date(unixTime);
+    });
 
-    var xAxis = d3.scaleLinear().range([AxisInfo.left, width]);
+    var xAxis = d3.scaleTime().range([AxisInfo.left, width]);
     var yAxis = d3.scaleLinear().range([height, AxisInfo.bottom]);
 
     xAxis.domain(d3.extent(data, function(point) { return point.x; }));
